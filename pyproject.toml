@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pymathlite"
+version = "0.1.0"
+description = "A Lite Math operators."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {file = "LICENSE"}
+authors = [{ name = "Sriram Annamalai", email = "sriramannamalai2002@gamil.com" }]
+keywords = ["matrix", "math", "learning", "example"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+Homepage = "https://github.com/SriRam-Annamalai04/pymathlite"
+Issues = "https://github.com/SriRam-Annamalai04/pymathlite.git/issues"
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "README.md", "LICENSE", "pyproject.toml"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pymathlite"]

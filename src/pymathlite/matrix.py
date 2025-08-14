@@ -1,5 +1,6 @@
 class Matrix:
     def __init__(self, value: list[list[any]]):
+        self._value = None
         self.value = value
         self._row: int = len(self.value)
         self._column: int = len(self.value[0])
@@ -11,10 +12,12 @@ class Matrix:
     @value.setter
     def value(self, v: list[list[any]]):
         column = 0
+        if not isinstance(v, list):
+            raise TypeError(f'{v} is not a list')
         for i, column_value in enumerate(v):
             if not isinstance(column_value, list):
                 raise TypeError(f'{column_value} is not a list')
-            if i == 1:
+            if i == 0:
                 column = len(column_value)
             elif column != len(column_value):
                 raise ValueError("Each Column should have the same length")

@@ -34,3 +34,14 @@ def test_shape_mismatch_raises():
     b = Matrix([[1, 2, 3]])
     with pytest.raises(ValueError):
         _ = a + b
+
+
+def test_empty_matrix_raises():
+    with pytest.raises(ValueError):
+        Matrix([])
+
+
+def test_zeros_shape():
+    z = Matrix.zeros(2, 3)
+    assert (z.row, z.column) == (2, 3)
+    assert repr(z) == "Matrix([[0, 0, 0], [0, 0, 0]])"

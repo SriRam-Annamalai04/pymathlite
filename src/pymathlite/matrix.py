@@ -1,26 +1,34 @@
+from typing import Any
+
+
 class Matrix:
-    def __init__(self, value: list[list[any]]):
+    """A 2-D matrix backed by a list of equal-length rows."""
+
+
+    def __init__(self, value: list[list[Any]]):
         self._value = None
         self.value = value
         self._row: int = len(self.value)
         self._column: int = len(self.value[0])
 
     @property
-    def value(self) -> list[list[any]]:
+    def value(self) -> list[list[Any]]:
         return self._value
 
     @value.setter
-    def value(self, v: list[list[any]]):
+    def value(self, v: list[list[Any]]):
         column = 0
         if not isinstance(v, list):
             raise TypeError(f'{v} is not a list')
+        if not v:
+            raise ValueError("Matrix must have at least one row")
         for i, column_value in enumerate(v):
             if not isinstance(column_value, list):
                 raise TypeError(f'{column_value} is not a list')
             if i == 0:
                 column = len(column_value)
             elif column != len(column_value):
-                raise ValueError("Each Column should have the same length")
+                raise ValueError("All rows must have the same length")
         self._value = v
 
     @property
